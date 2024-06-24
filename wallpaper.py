@@ -41,7 +41,7 @@ for a in response.json():
     
     print (f"Downloading {a['originalFileName']} as {filename}")
 
-    r = request_wrap(f"/asset/thumbnail/{a['id']}?format=JPEG")
+    r = request_wrap(f"/assets/thumbnail/{a['id']}?format=JPEG")
 
     with open(filename, 'wb') as fd:
         fd.write(r.content)
