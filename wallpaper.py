@@ -28,7 +28,7 @@ def request_wrap(url, params=None):
 #First, lets get a list of photos
 
 params = {"count": options.quantity}
-response = request_wrap("/asset/random", params) # TODO: more than random?...
+response = request_wrap("/assets/random", params) # TODO: more than random?...
 
 response.raise_for_status()
 
@@ -41,7 +41,7 @@ for a in response.json():
     
     print (f"Downloading {a['originalFileName']} as {filename}")
 
-    r = request_wrap(f"/assets/thumbnail/{a['id']}?format=JPEG")
+    r = request_wrap(f"/assets/{a['id']}/thumbnail?size=preview")
 
     with open(filename, 'wb') as fd:
         fd.write(r.content)
